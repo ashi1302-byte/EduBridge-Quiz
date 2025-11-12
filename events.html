@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge - Events & Webinars</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --turquoise: #50E3C2;
+  --light-blue: #4A90E2;
+  --dark: #023047;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f0fbff;color:var(--dark);}
+a{text-decoration:none;color:inherit;}
+
+/* Navbar */
+nav{
+  width:100%;
+  background:linear-gradient(90deg,var(--light-blue),var(--turquoise));
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+nav h1{font-size:1.5rem;}
+nav ul{list-style:none;display:flex;gap:20px;align-items:center;}
+nav ul li a{
+  color:white;
+  font-weight:500;
+  padding:6px 12px;
+  border-radius:5px;
+  transition:0.3s;
+}
+nav ul li a:hover,nav ul li a.active{background:rgba(255,255,255,0.25);}
+
+/* Hero Section */
+.hero{
+  text-align:center;
+  padding:70px 20px 40px;
+  background:linear-gradient(135deg,#E0F7FF 30%,#D0FDF4);
+}
+.hero h2{
+  font-size:2.4rem;
+  color:var(--light-blue);
+  margin-bottom:15px;
+}
+.hero p{color:#333;font-size:1.1rem;}
+
+/* Event Cards */
+.section{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+}
+.section h3{
+  color:var(--light-blue);
+  margin-bottom:25px;
+  font-size:1.8rem;
+  border-left:5px solid var(--turquoise);
+  padding-left:10px;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:25px;
+}
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,0.1);
+  transition:0.3s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card-content{padding:20px;}
+.card-content h4{color:var(--dark);font-size:1.2rem;margin-bottom:8px;}
+.card-content p{font-size:0.95rem;color:#555;margin-bottom:15px;}
+.card-content button{
+  padding:10px 18px;
+  background:linear-gradient(90deg,var(--light-blue),var(--turquoise));
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+.card-content button:hover{opacity:0.9;}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:200;
+}
+.modal-content{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:450px;
+  position:relative;
+  animation:fadeIn 0.3s ease;
+}
+.modal h3{color:var(--light-blue);margin-bottom:15px;}
+.modal input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+.modal button{
+  background:linear-gradient(90deg,var(--light-blue),var(--turquoise));
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  width:100%;
+  margin-top:10px;
+}
+.modal button:hover{opacity:0.9;}
+.modal-close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:1.5rem;
+  cursor:pointer;
+  color:#666;
+}
+
+/* Past Events */
+.past-events{
+  background:linear-gradient(135deg,#D8F7FF,#D6FFF2);
+  padding:60px 20px;
+  text-align:center;
+  margin-top:60px;
+}
+.past-events h3{
+  color:var(--light-blue);
+  font-size:2rem;
+  margin-bottom:30px;
+}
+.past-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+.past-gallery div{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.1);
+}
+.past-gallery img{
+  width:100%;
+  height:160px;
+  border-radius:10px;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+.past-gallery p{font-size:0.95rem;color:#555;}
+
+/* Footer */
+footer{
+  background:#000;
+  color:#ccc;
+  text-align:center;
+  padding:30px 15px;
+  margin-top:0;
+}
+footer img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  margin:10px;
+  border:2px solid var(--turquoise);
+}
+footer p{font-size:0.9rem;color:#aaa;margin-top:10px;}
+
+@keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h1>EduBridge</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+    <li><a href="#" class="active">Events</a></li>
+     <li><a href="FAQ.html" >FAQ/Help center</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h2>Explore Our Upcoming Events & Webinars</h2>
+  <p>Join interactive sessions, hands-on workshops, and expert-led discussions to enhance your learning experience.</p>
+</section>
+
+<!-- Webinars -->
+<section class="section">
+  <h3>📡 Upcoming Webinars</h3>
+  <div class="cards">
+    <div class="card">
+      <img src="assets/images/event-webinar.jpg" alt="Webinar">
+      <div class="card-content">
+        <h4>AI in Modern Classrooms</h4>
+        <p>Learn how Artificial Intelligence is shaping future classrooms for teachers and students.</p>
+        <button class="register-btn" data-title="AI in Modern Classrooms">Register Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/event-live.png" alt="Live Session">
+      <div class="card-content">
+        <h4>Interactive Learning Live Session</h4>
+        <p>Join our live session on next-gen tools that make learning engaging and effective.</p>
+        <button class="register-btn" data-title="Interactive Learning Live Session">Join Live</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workshops -->
+<section class="section">
+  <h3>🧩 Hands-On Workshops</h3>
+  <div class="cards">
+    <div class="card">
+      <img src="assets/images/event-workshop.jpg" alt="Workshop">
+      <div class="card-content">
+        <h4>Creative Study Techniques Workshop</h4>
+        <p>Explore smart learning strategies and practical exercises that improve memory and focus.</p>
+        <button class="register-btn" data-title="Creative Study Techniques Workshop">Enroll</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/event-calendar.png" alt="Calendar">
+      <div class="card-content">
+        <h4>Monthly Education Calendar</h4>
+        <p>Track upcoming webinars, assessments, and deadlines with our interactive academic calendar.</p>
+        <button class="register-btn" data-title="Monthly Education Calendar">View Schedule</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Past Events -->
+<section class="past-events">
+  <h3>🎬 Past Events Highlights</h3>
+  <div class="past-gallery">
+    <div>
+      <img src="assets/images/event-webinar.jpg" alt="Past Webinar">
+      <p>Recap of our AI Learning webinar attended by 500+ students worldwide.</p>
+    </div>
+    <div>
+      <img src="assets/images/event-workshop.jpg" alt="Workshop">
+      <p>Hands-on study skills workshop that helped learners improve focus by 30%.</p>
+    </div>
+    <div>
+      <img src="assets/images/event-live.png" alt="Live Event">
+      <p>Live Q&A with top educators discussing challenges in modern e-learning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h3 id="modalTitle">Register for Event</h3>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <button>Submit</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <img src="assets/images/ashi.png" alt="Ashi">
+    <img src="assets/images/aishwarya.png" alt="Aishwarya">
+    <img src="assets/images/ansh.png" alt="Ansh">
+  </div>
+  <p>© 2025 EduBridge | Empowering Learning Everywhere<br>Made with ❤️ by Team EduBridge</p>
+</footer>
+
+<script>
+const modal = document.getElementById('registerModal');
+const closeModal = document.getElementById('closeModal');
+const modalTitle = document.getElementById('modalTitle');
+
+document.querySelectorAll('.register-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    modal.style.display='flex';
+    modalTitle.textContent = "Register for " + btn.dataset.title;
+  });
+});
+closeModal.addEventListener('click',()=>modal.style.display='none');
+window.addEventListener('click',e=>{if(e.target==modal) modal.style.display='none';});
+</script>
+
+</body>
+</html>
