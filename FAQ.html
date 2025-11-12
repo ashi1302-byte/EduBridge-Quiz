@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge - Help Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+:root {
+  --turquoise: #50E3C2;
+  --light-blue: #4A90E2;
+  --text-main: #023047;
+  --bg-light: #f5f7fa;
+  --footer-bg: #000000;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-main);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--turquoise);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: fixed;
+  width: 100%;
+  top:0;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.logo { font-size:1.8rem; font-weight:bold; }
+.nav-links { display:flex; list-style:none; }
+.nav-links li { margin:0 15px; }
+.nav-links a { text-decoration:none; color:white; font-weight:500; transition:0.3s; }
+.nav-links a.active, .nav-links a:hover { color: var(--light-blue); }
+.social-icons { display:flex; gap:15px; }
+.social-icons a { color:white; font-size:1.2rem; transition:0.3s; }
+.social-icons a:hover { color: var(--light-blue); }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+  color:white;
+  text-align:center;
+  padding:120px 20px 80px;
+  margin-top:60px;
+  border-radius:0 0 20px 20px;
+}
+.hero h1 { font-size:3rem; margin-bottom:15px; }
+.hero p { font-size:1.3rem; }
+
+/* FAQ Section */
+.faq-section {
+  max-width: 1000px;
+  margin: 50px auto 50px;
+  padding: 0 20px;
+}
+.faq-search {
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-bottom:40px;
+}
+.faq-search input {
+  width:100%;
+  max-width:500px;
+  padding:12px 20px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:1rem;
+}
+.category-tabs {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+}
+.category-tabs button {
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background: var(--light-blue);
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+.category-tabs button.active, .category-tabs button:hover {
+  background: var(--turquoise);
+}
+
+/* Accordion */
+.accordion-item {
+  background:white;
+  border-radius:10px;
+  margin-bottom:15px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.accordion-header { 
+  display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:1.1rem; 
+  cursor:pointer;
+}
+.accordion-header i { transition:0.3s; }
+.accordion-body { display:none; margin-top:15px; font-size:1rem; line-height:1.6; }
+.read-more { color: var(--light-blue); cursor:pointer; font-weight:500; transition:0.3s; }
+.read-more:hover { color: var(--turquoise); }
+
+/* Feedback Buttons */
+.feedback {
+  display:flex; gap:15px;
+  margin-top:10px;
+}
+.feedback button {
+  padding:6px 12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background: var(--light-blue);
+  color:white;
+  font-size:0.9rem;
+  transition:0.3s;
+}
+.feedback button:hover { background: var(--turquoise); }
+
+/* Submit Form */
+.submit-question {
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  margin-top:50px;
+}
+.submit-question h3 { color: var(--light-blue); margin-bottom:20px; }
+.submit-question input, .submit-question textarea {
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:1rem;
+}
+.submit-question button {
+  background: var(--turquoise);
+  color:white;
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.3s;
+}
+.submit-question button:hover { background: var(--light-blue); }
+
+/* Back to top */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--turquoise);
+  color:white;
+  padding:12px 15px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:1.2rem;
+  display:none;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  z-index:9999;
+}
+
+/* Footer */
+footer {
+  background: var(--footer-bg);
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+footer a { color:white; margin:0 10px; text-decoration:none; font-weight:500; }
+footer a:hover { color: var(--light-blue); }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">EduBridge</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+    <li><a href="events.html">Events</a></li>
+        <li><a href="#" class="active">FAQ/Help center</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Help Center</h1>
+  <p>Find answers to your questions quickly and efficiently</p>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <div class="faq-search">
+    <input type="text" id="faqSearch" placeholder="Search questions...">
+  </div>
+
+  <div class="category-tabs">
+    <button class="active" data-cat="all">All</button>
+    <button data-cat="account">Account & Login</button>
+    <button data-cat="courses">Courses & Progress</button>
+    <button data-cat="payments">Payments</button>
+    <button data-cat="events">Events & Webinars</button>
+  </div>
+
+  <div class="accordion-container">
+
+    <!-- Account Questions -->
+    <div class="accordion-item" data-cat="account">
+      <div class="accordion-header">How do I reset my password? <i class="fas fa-plus"></i></div>
+      <div class="accordion-body">
+        <p>Go to Settings > Account > Reset Password. Follow the instructions sent to your email.</p>
+        <div class="feedback">
+          <button class="helpful">✅ Helpful</button>
+          <button class="not-helpful">❌ Not Helpful</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item" data-cat="courses">
+      <div class="accordion-header">How can I track my course progress? <i class="fas fa-plus"></i></div>
+      <div class="accordion-body">
+        <p>Visit your Dashboard to view each course completion percentage and scores.</p>
+        <div class="feedback">
+          <button class="helpful">✅ Helpful</button>
+          <button class="not-helpful">❌ Not Helpful</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" data-cat="payments">
+      <div class="accordion-header">What payment methods are accepted? <i class="fas fa-plus"></i></div>
+      <div class="accordion-body">
+        <p>We accept credit/debit cards, UPI, and PayPal for subscriptions and purchases.</p>
+        <div class="feedback">
+          <button class="helpful">✅ Helpful</button>
+          <button class="not-helpful">❌ Not Helpful</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" data-cat="events">
+      <div class="accordion-header">How do I register for webinars? <i class="fas fa-plus"></i></div>
+      <div class="accordion-body">
+        <p>Go to the Events page, select your desired webinar, and click 'Register'. You will receive a confirmation email.</p>
+        <div class="feedback">
+          <button class="helpful">✅ Helpful</button>
+          <button class="not-helpful">❌ Not Helpful</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Submit Question Form -->
+  <div class="submit-question">
+    <h3>Submit Your Question</h3>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="5" placeholder="Your Question"></textarea>
+    <button id="submitQuestion">Submit</button>
+  </div>
+
+</section>
+
+<div id="backToTop">&#8679;</div>
+
+<!-- Footer -->
+<footer>
+  <p>EduBridge &copy; 2025 | <a href="https://linkedin.com" target="_blank">LinkedIn</a> | <a href="https://github.com" target="_blank">GitHub</a> | <a href="mailto:support@edubridge.com">Contact</a></p>
+</footer>
+
+<script>
+// Accordion toggle
+const headers = document.querySelectorAll('.accordion-header');
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('i');
+    body.style.display = body.style.display === 'block' ? 'none' : 'block';
+    icon.classList.toggle('fa-plus');
+    icon.classList.toggle('fa-minus');
+  });
+});
+
+// Category filter
+const categoryButtons = document.querySelectorAll('.category-tabs button');
+const accordionItems = document.querySelectorAll('.accordion-item');
+categoryButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.getAttribute('data-cat');
+    accordionItems.forEach(item => {
+      if(cat === 'all' || item.getAttribute('data-cat') === cat){
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Search filter
+const faqSearch = document.getElementById('faqSearch');
+faqSearch.addEventListener('input', () => {
+  const query = faqSearch.value.toLowerCase();
+  accordionItems.forEach(item => {
+    const text = item.querySelector('.accordion-header').textContent.toLowerCase();
+    if(text.includes(query)){
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
+
+// Feedback buttons
+document.querySelectorAll('.helpful').forEach(btn => {
+  btn.addEventListener('click', ()=> alert('Thanks for your feedback!'));
+});
+document.querySelectorAll('.not-helpful').forEach(btn => {
+  btn.addEventListener('click', ()=> alert('Thanks for your feedback!'));
+});
+
+// Submit Question
+document.getElementById('submitQuestion').addEventListener('click', ()=>{
+  alert('Thank you! Your question has been submitted.');
+});
+
+// Back to top
+const backToTop = document.getElementById("backToTop");
+window.onscroll = function() {
+  if(document.body.scrollTop>200||document.documentElement.scrollTop>200){
+    backToTop.style.display="block";
+  }else{backToTop.style.display="none";}
+};
+backToTop.addEventListener("click",()=>{window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body>
+</html>

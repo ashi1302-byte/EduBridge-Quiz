@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge - Articles</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+  body { margin: 0; font-family: 'Poppins', sans-serif; background: #E0F7FF; color: #002f2e; }
+
+  /* Navbar */
+  .navbar { background-color: #00c6c3; color: white; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; position: fixed; width: 100%; top: 0; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  .logo { font-size: 1.8rem; font-weight: bold; }
+  .nav-links { display: flex; list-style: none; margin: 0; }
+  .nav-links li { margin: 0 15px; }
+  .nav-links a { text-decoration: none; color: white; font-weight: 500; transition: 0.3s; }
+  .nav-links a.active, .nav-links a:hover { color: #003c3b; }
+  .social-icons { display: flex; gap: 15px; }
+  .social-icons a { color: white; font-size: 1.2rem; transition: 0.3s; }
+  .social-icons a:hover { color: #003c3b; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #00c6c3, #00bcd4); color: white; text-align: center; padding: 120px 20px 80px; margin-top: 60px; border-radius: 0 0 20px 20px; }
+  .hero h1 { font-size: 3rem; margin-bottom: 15px; }
+  .hero p { font-size: 1.3rem; margin-bottom: 20px; }
+
+  /* Articles Grid */
+  .articles-container { max-width: 1200px; margin: 50px auto 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 0 20px; }
+  .article-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+  .article-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+  .article-card img { width: 100%; height: 200px; object-fit: cover; }
+  .article-content { padding: 25px; display: flex; flex-direction: column; flex: 1; }
+  .article-content h2 { color: #007a78; font-size: 1.8rem; margin-bottom: 10px; }
+  .article-content p { font-size: 1rem; line-height: 1.6; margin-bottom: 10px; flex: 1; }
+  .read-more { color: #00c6c3; cursor: pointer; font-weight: 500; text-decoration: none; }
+  .extra-content { display: none; margin-top: 15px; }
+  .extra-content h3 { color: #007a78; font-size: 1.2rem; margin-bottom: 10px; }
+  .extra-content ul, .extra-content ol { margin-left: 20px; margin-bottom: 10px; }
+
+  /* Back to top */
+  #backToTop { position: fixed; bottom: 30px; right: 30px; background: #00c6c3; color: white; padding: 12px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: none; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+  #backToTop:hover { background: #007a78; }
+
+  /* Footer */
+  footer { background: #000; color: #fff; padding: 40px 20px; text-align: center; }
+  footer .social-icons { margin: 15px 0; }
+  footer .social-icons a { color: white; font-size: 1.5rem; margin: 0 10px; transition:0.3s; }
+  footer .social-icons a:hover { color: #00c6c3; }
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">EduBridge</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="articles.html" class="active">Articles</a></li>
+    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+    <li><a href="events.html">Events</a></li>
+     <li><a href="FAQ.html" >FAQ/Help center</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:contact@edubridge.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Educational Articles</h1>
+  <p>Deep insights, tips, and guides to enhance your learning journey</p>
+</section>
+
+<!-- Articles Section -->
+<section class="articles-container">
+
+  <!-- Article 1 -->
+  <div class="article-card">
+    <img src="assets/images/article-study.jpg" alt="Effective Study Techniques">
+    <div class="article-content">
+      <h2>Effective Study Techniques</h2>
+      <p>Learn to study smarter, not harder. Active recall, spaced repetition, and mind mapping improve retention.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <h3>Top Strategies</h3>
+        <ul>
+          <li><strong>Pomodoro Technique:</strong> Study in focused intervals with breaks.</li>
+          <li><strong>Active Recall:</strong> Test yourself, don't just reread.</li>
+          <li><strong>Mind Mapping:</strong> Visualize ideas and connections.</li>
+          <li><strong>Teach Others:</strong> Reinforce learning by explaining concepts.</li>
+        </ul>
+        <p>Studying effectively is about strategy, not hours. Combining these methods enhances memory, understanding, and application. Alternating subjects prevents fatigue, summarizing in your own words deepens comprehension, and regular review ensures long-term retention. Over time, these habits improve focus, reduce stress, and make studying more enjoyable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 2 -->
+  <div class="article-card">
+    <img src="assets/images/article-time.jpg" alt="Time Management">
+    <div class="article-content">
+      <h2>Time Management for Students</h2>
+      <p>Balance studies, hobbies, and personal life by managing your time effectively.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <h3>Recommended Strategies</h3>
+        <ol>
+          <li>Create weekly schedules with dedicated study and leisure time.</li>
+          <li>Prioritize tasks using the Eisenhower Matrix.</li>
+          <li>Set SMART goals to track progress.</li>
+          <li>Reduce distractions with productivity apps.</li>
+        </ol>
+        <p>Effective time management helps maintain a healthy balance between academics, hobbies, and personal life. Planning ahead prevents last-minute stress, improves productivity, and creates a sense of control. Consistent scheduling and task prioritization also build discipline, allowing students to focus on what matters most while enjoying their free time responsibly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 3 -->
+  <div class="article-card">
+    <img src="assets/images/article-memory.jpg" alt="Memory Enhancement">
+    <div class="article-content">
+      <h2>Memory Enhancement Techniques</h2>
+      <p>Boost your memory with proven strategies and exercises that strengthen recall and learning.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <ul>
+          <li>Chunking information into smaller bits for easier recall.</li>
+          <li>Mnemonics and memory aids to remember complex ideas.</li>
+          <li>Regular review sessions to strengthen memory retention.</li>
+        </ul>
+        <p>Memory is like a muscle that improves with practice. Using techniques such as visualization, repetition, and association helps solidify knowledge. Active engagement with material, like explaining it aloud or teaching someone else, boosts retention. A combination of these methods ensures faster recall, better exam performance, and improved problem-solving skills.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 4 -->
+  <div class="article-card">
+    <img src="assets/images/article-habits.jpg" alt="Building Productive Habits">
+    <div class="article-content">
+      <h2>Building Productive Habits</h2>
+      <p>Learn how to develop habits that improve learning efficiency and personal growth.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <ul>
+          <li>Start small and stay consistent with new routines.</li>
+          <li>Track your progress daily and adjust as needed.</li>
+          <li>Reward yourself for milestones to reinforce positive behavior.</li>
+        </ul>
+        <p>Building productive habits requires persistence and self-awareness. Begin with manageable tasks, gradually increasing complexity. Reflection on daily actions helps identify areas of improvement. Habits like consistent study times, focused work sessions, and goal tracking enhance both learning efficiency and personal growth, creating a foundation for long-term success.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 5 -->
+  <div class="article-card">
+    <img src="assets/images/article-focus.jpg" alt="Improving Focus">
+    <div class="article-content">
+      <h2>Improving Focus</h2>
+      <p>Techniques to stay focused during study sessions and minimize distractions.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <ul>
+          <li>Create a distraction-free study environment.</li>
+          <li>Use timers to maintain attention spans (Pomodoro technique).</li>
+          <li>Practice mindfulness or short meditation breaks to reset the mind.</li>
+        </ul>
+        <p>Focus is a skill that can be developed. Minimizing distractions, organizing your workspace, and practicing concentration exercises help maintain attention during study sessions. Short breaks prevent mental fatigue, and mindfulness techniques train your brain to stay present. Over time, these strategies increase productivity, comprehension, and overall learning efficiency.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 6 -->
+  <div class="article-card">
+    <img src="assets/images/article-ai.jpg" alt="AI in Education">
+    <div class="article-content">
+      <h2>AI in Education</h2>
+      <p>Discover how artificial intelligence is transforming the learning experience and teaching methods.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <ul>
+          <li>Personalized learning paths using AI to match student pace.</li>
+          <li>Intelligent tutoring systems that adapt to strengths and weaknesses.</li>
+          <li>Automation of administrative tasks for teachers, freeing more teaching time.</li>
+        </ul>
+        <p>Artificial Intelligence is revolutionizing education by making learning more adaptive and efficient. AI tools analyze individual performance, recommend tailored content, and provide instant feedback. Students benefit from personalized guidance, while educators can focus on creative teaching methods. Embracing AI leads to enhanced engagement, better outcomes, and a smarter learning ecosystem.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 7 -->
+  <div class="article-card">
+    <img src="assets/images/article-ai-learning.jpg" alt="AI-Assisted Learning">
+    <div class="article-content">
+      <h2>AI-Assisted Learning</h2>
+      <p>Use AI tools to enhance learning efficiency, understand complex topics, and track progress.</p>
+      <a class="read-more" onclick="toggleContent(this)">Read More...</a>
+      <div class="extra-content">
+        <ul>
+          <li>Adaptive quizzes and learning analytics to track progress effectively.</li>
+          <li>Virtual tutors and chatbots for instant guidance.</li>
+          <li>Smart content recommendations based on learning patterns.</li>
+        </ul>
+        <p>AI-assisted learning tools help students grasp complex concepts faster. By analyzing performance data, these tools identify knowledge gaps, suggest targeted practice, and adapt the learning path. Virtual tutors provide explanations 24/7, and intelligent content recommendations keep students engaged. Integrating AI into study routines enhances comprehension, retention, and overall academic performance.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div id="backToTop">&#8679;</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 EduBridge. All Rights Reserved. | Designed by Team EduBridge</p>
+  <div class="social-icons">
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:contact@edubridge.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+<script>
+  // Back to top
+  const backToTop = document.getElementById("backToTop");
+  window.onscroll = function() {
+    if(document.body.scrollTop>200||document.documentElement.scrollTop>200){
+      backToTop.style.display="block";
+    } else { backToTop.style.display="none"; }
+  };
+  backToTop.addEventListener("click",()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+  // Toggle Read More
+  function toggleContent(el){
+    const extra = el.nextElementSibling;
+    if(extra.style.display==="none" || extra.style.display===""){
+      extra.style.display="block"; el.textContent="Read Less...";
+    } else {
+      extra.style.display="none"; el.textContent="Read More...";
+    }
+  }
+</script>
+
+</body>
+</html>

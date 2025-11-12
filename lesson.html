@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge Lesson</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --turquoise: #50E3C2;
+  --light-blue: #4A90E2;
+  --bg-light: #E0F7FF;
+  --text-main: #023047;
+}
+
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+body{
+  background: var(--bg-light);
+  color: var(--text-main);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 20px;
+}
+
+/* Navbar */
+nav{
+  width:100%;
+  max-width:1000px;
+  background: linear-gradient(90deg, var(--light-blue), var(--turquoise));
+  color:white;
+  padding:15px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom:40px;
+}
+nav h1{font-size:1.5em;}
+nav ul{list-style:none; display:flex; gap:20px;}
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  padding:5px 10px;
+  border-radius:5px;
+}
+nav ul li a:hover,
+nav ul li a.active{background: rgba(255,255,255,0.2);}
+
+/* Lesson Container */
+.lesson-container{
+  width:100%;
+  max-width:900px;
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Lesson Header */
+.lesson-header{
+  margin-bottom:30px;
+}
+.lesson-header h2{
+  color: var(--light-blue);
+  font-size:2em;
+  margin-bottom:10px;
+}
+.lesson-header p{
+  font-size:1.1em;
+  color:#555;
+}
+
+/* Lesson Content */
+.lesson-content p{
+  margin-bottom:20px;
+  line-height:1.7;
+}
+.lesson-content img, .lesson-content video{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+/* Buttons */
+.lesson-buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.lesson-buttons button{
+  background: linear-gradient(90deg, var(--light-blue), var(--turquoise));
+  color:white;
+  border:none;
+  padding:15px 25px;
+  border-radius:15px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.12);
+  transition:0.3s;
+}
+.lesson-buttons button:hover{
+  transform:translateY(-3px);
+  background: linear-gradient(90deg, var(--turquoise), var(--light-blue));
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>EduBridge Lesson</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" class="active">Lesson</a></li>
+  </ul>
+</nav>
+
+<div class="lesson-container">
+  <!-- Lesson Header -->
+  <div class="lesson-header">
+    <h2 id="lessonTitle">Fractions Simplified</h2>
+    <p id="lessonDesc">Learn how to easily simplify fractions and understand their basics with examples and exercises.</p>
+  </div>
+
+  <!-- Lesson Content -->
+  <div class="lesson-content" id="lessonContent">
+    <p>Fractions represent parts of a whole. For example, 1/2 means one part out of two equal parts.</p>
+    <p>Steps to simplify a fraction:</p>
+    <ul>
+      <li>Find the greatest common divisor (GCD) of numerator and denominator.</li>
+      <li>Divide both numerator and denominator by the GCD.</li>
+    </ul>
+    <img src="assets/images/fractions-example.jpg" alt="Fractions Example">
+    <video controls>
+      <source src="assets/videos/fractions.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Buttons -->
+  <div class="lesson-buttons">
+    <button onclick="markComplete()">Mark as Complete ✅</button>
+    <button onclick="nextLesson()">Next Lesson ➡</button>
+    <button onclick="readAloud()">Read Aloud 🔊</button>
+  </div>
+</div>
+
+<script>
+// LocalStorage Key
+const lessonKey = "lessonProgress";
+
+// Mark lesson as complete
+function markComplete(){
+  localStorage.setItem(lessonKey, "Fractions Simplified");
+  alert("Lesson marked as complete!");
+}
+
+// Navigate to next lesson (example)
+function nextLesson(){
+  alert("Navigate to next lesson here!");
+  // window.location.href = "next-lesson.html";
+}
+
+// Text-to-Speech
+function readAloud(){
+  const content = document.getElementById("lessonContent").innerText;
+  const speech = new SpeechSynthesisUtterance(content);
+  speech.lang = 'en-IN';
+  window.speechSynthesis.speak(speech);
+}
+
+// Check if lesson is already completed
+window.addEventListener("load", ()=>{
+  const completedLesson = localStorage.getItem(lessonKey);
+  if(completedLesson === "Fractions Simplified"){
+    alert("You have already completed this lesson!");
+  }
+});
+</script>
+
+</body>
+</html>

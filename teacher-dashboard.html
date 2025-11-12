@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge - Teacher Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --turquoise: #50E3C2;
+  --light-blue: #4A90E2;
+  --bg-light: #E0F7FF;
+  --text-main: #023047;
+  --card-bg: #fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  background: var(--bg-light);
+  color: var(--text-main);
+  min-height:100vh;
+}
+
+/* Navbar */
+nav{
+  width:100%;
+  background: linear-gradient(90deg, var(--light-blue), var(--turquoise));
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+nav h1{font-size:1.5em;}
+nav ul{list-style:none;display:flex;gap:20px;align-items:center;}
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  padding:5px 12px;
+  border-radius:5px;
+  transition:0.3s;
+}
+nav ul li a:hover,
+nav ul li a.active{
+  background: rgba(255,255,255,0.2);
+}
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+.profile img{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:2px solid white;
+}
+
+/* Dashboard Container */
+.container{
+  max-width:1200px;
+  margin:30px auto;
+  display:grid;
+  grid-template-columns: 1fr 300px;
+  gap:30px;
+}
+
+/* Summary Cards */
+.summary-cards{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.card{
+  background: var(--card-bg);
+  padding:25px;
+  flex:1;
+  min-width:150px;
+  border-radius:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+.card h2{
+  font-size:2rem;
+  color: var(--light-blue);
+}
+.card p{
+  margin-top:8px;
+  font-size:0.9rem;
+  color:#555;
+}
+
+/* Charts & Table */
+.main-content{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+.chart-container{
+  background:#f4fbff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.chart-container h3{
+  margin-bottom:15px;
+  color: var(--light-blue);
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  text-align:center;
+  cursor:pointer;
+}
+th,td{
+  padding:12px 10px;
+  border-bottom:1px solid #ccc;
+}
+th{
+  background: var(--light-blue);
+  color:white;
+  font-weight:600;
+}
+tr:hover{background:#f0faff;}
+.progress-bar{
+  background:#d9f2f2;
+  border-radius:10px;
+  overflow:hidden;
+  height:12px;
+  width:80%;
+  margin:auto;
+}
+.progress-bar-inner{
+  height:100%;
+  width:0%;
+  background: var(--turquoise);
+  transition:0.8s ease;
+  border-radius:10px;
+}
+
+/* Sidebar */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.sidebar h3{
+  color: var(--light-blue);
+  margin-bottom:10px;
+}
+.sidebar button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background: var(--turquoise);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+.sidebar button:hover{
+  background: var(--light-blue);
+}
+
+/* Recent Activity */
+.activity{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.activity h3{margin-bottom:15px;color: var(--light-blue);}
+.activity ul{list-style:none;}
+.activity ul li{
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  font-size:0.95rem;
+}
+.activity ul li:last-child{border-bottom:none;}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:200;
+}
+.modal-content{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:700px;
+  max-height:90%;
+  overflow-y:auto;
+  position:relative;
+}
+.modal-close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:1.5rem;
+  cursor:pointer;
+  color:#555;
+}
+.modal h2{
+  color: var(--light-blue);
+  margin-bottom:15px;
+}
+.modal form input, .modal form textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+.modal form button{
+  padding:12px 20px;
+  background: var(--light-blue);
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+/* Responsive */
+@media(max-width:1024px){
+  .container{
+    grid-template-columns:1fr;
+  }
+  .sidebar{flex-direction:row;flex-wrap:wrap;}
+  .sidebar button{flex:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h1>EduBridge</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+   <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="articles.html">Articles</a></li>
+     <li><a href="#" class="active">Teacher Dashboard</a></li>
+       <li><a href="events.html">Events</a></li>
+        <li><a href="FAQ.html">FAQ/Help Center</a></li>
+    <li class="profile">
+      <img src="assets/images/teacher-avatar.jpg" alt="Teacher">
+      <span>Ms. Verma ▼</span>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="card"><h2>120</h2><p>Total Students</p></div>
+      <div class="card"><h2>78%</h2><p>Average Score</p></div>
+      <div class="card"><h2>340</h2><p>Lessons Completed</p></div>
+      <div class="card"><h2>5</h2><p>At-risk Students</p></div>
+      <div class="card"><h2>8</h2><p>Upcoming Assignments</p></div>
+    </div>
+
+    <!-- Charts -->
+    <div class="chart-container">
+      <h3>Average Score per Student</h3>
+      <canvas id="avgScoreChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Lesson Completion Rate (%)</h3>
+      <canvas id="completionChart"></canvas>
+    </div>
+
+    <!-- Student Table -->
+    <div class="chart-container">
+      <h3>Student Performance (Click Row for Details)</h3>
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>Student</th><th>Class</th><th>Subject</th><th>Score</th><th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-name="Student A" data-class="5A" data-subject="Math" data-score="85" data-progress="80">
+            <td>Student A</td><td>5A</td><td>Math</td><td>85</td>
+            <td><div class="progress-bar"><div class="progress-bar-inner" style="width:80%"></div></div></td>
+          </tr>
+          <tr data-name="Student B" data-class="5B" data-subject="Science" data-score="70" data-progress="60">
+            <td>Student B</td><td>5B</td><td>Science</td><td>70</td>
+            <td><div class="progress-bar"><div class="progress-bar-inner" style="width:60%"></div></div></td>
+          </tr>
+          <tr data-name="Student C" data-class="5A" data-subject="English" data-score="95" data-progress="90">
+            <td>Student C</td><td>5A</td><td>English</td><td>95</td>
+            <td><div class="progress-bar"><div class="progress-bar-inner" style="width:90%"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Quick Actions</h3>
+    <button data-action="new-assignment">New Assignment</button>
+    <button data-action="message-class">Message Class</button>
+    <button data-action="generate-quiz">Generate Quiz</button>
+    <button data-action="download-report">Download Report</button>
+
+    <!-- Recent Activity -->
+    <div class="activity">
+      <h3>Recent Activity</h3>
+      <ul>
+        <li>Student A submitted Math Assignment</li>
+        <li>Student B completed Science Lesson 3</li>
+        <li>New Assignment posted for 5A</li>
+        <li>Student C scored 95 in English</li>
+        <li>Reminder sent to at-risk students</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" id="actionModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// Charts
+const avgCtx = document.getElementById('avgScoreChart').getContext('2d');
+const avgChart = new Chart(avgCtx, {
+  type: 'bar',
+  data: {
+    labels:['Student A','Student B','Student C','Student D','Student E'],
+    datasets:[{
+      label:'Average Score',
+      data:[85,70,95,60,78],
+      backgroundColor:['#4A90E2','#50E3C2','#4A90E2','#50E3C2','#4A90E2'],
+      borderRadius:8
+    }]
+  },
+  options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100}}}
+});
+
+const completionCtx = document.getElementById('completionChart').getContext('2d');
+const completionChart = new Chart(completionCtx, {
+  type:'line',
+  data:{labels:['Student A','Student B','Student C','Student D','Student E'],
+  datasets:[{label:'Completion Rate',data:[80,60,90,55,75],borderColor:'#50E3C2',backgroundColor:'rgba(80,227,194,0.2)',tension:0.4,fill:true,pointRadius:5}]},
+  options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100}}}
+});
+
+// Modal for Quick Actions
+const modal = document.getElementById('actionModal');
+const closeModal = document.getElementById('closeModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+
+document.querySelectorAll('.sidebar button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const action = btn.dataset.action;
+    modal.style.display = 'flex';
+    if(action==='new-assignment'){
+      modalTitle.textContent = 'Create New Assignment';
+      modalBody.innerHTML = `<form>
+        <input type="text" placeholder="Assignment Title" required>
+        <textarea placeholder="Assignment Description" rows="5" required></textarea>
+        <button type="submit">Create Assignment</button>
+      </form>`;
+    } else if(action==='message-class'){
+      modalTitle.textContent = 'Send Message to Class';
+      modalBody.innerHTML = `<form>
+        <input type="text" placeholder="Subject" required>
+        <textarea placeholder="Message content" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>`;
+    } else if(action==='generate-quiz'){
+      modalTitle.textContent = 'Generate New Quiz';
+      modalBody.innerHTML = `<form>
+        <input type="text" placeholder="Quiz Title" required>
+        <textarea placeholder="Questions (one per line)" rows="5" required></textarea>
+        <button type="submit">Create Quiz</button>
+      </form>`;
+    } else if(action==='download-report'){
+      modalTitle.textContent = 'Download Report';
+      modalBody.innerHTML = `<p>Click the button below to download the latest student performance report.</p>
+        <button onclick="alert('Report downloaded!')">Download</button>`;
+    }
+  });
+});
+
+closeModal.addEventListener('click', ()=>{modal.style.display='none';});
+window.addEventListener('click', e=>{
+  if(e.target==modal){modal.style.display='none';}
+});
+</script>
+
+</body>
+</html>

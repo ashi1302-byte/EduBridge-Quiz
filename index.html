@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBridge - Smart Learning Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- navbar -->
+     <nav class="navbar">
+  <div class="logo">EduBridge</div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="articles.html">Articles</a></li>
+     <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+       <li><a href="events.html">Events</a></li>
+      <li><a href="FAQ.html" >FAQ/Help center</a></li>
+  </ul>
+</nav>
+
+
+
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="text">
+        <h1>Empowering Learning with <span class="typing"></span></h1>
+        <p>AI-driven, offline-ready, and multilingual learning designed to make education accessible for all.</p>
+
+        <a href="#" onclick="openLogin()" class="btn btn-ripple">Get Started</a>
+      </div>
+      <div class="hero-image">
+        <img src="assets/images/ai-student.png" alt="AI Learning" class="floating"/>
+      </div>
+    </div>
+    <div class="hero-bg-animation"></div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <h2>Our Key Features</h2>
+    <div class="feature-container">
+      <div class="feature-box">
+        <img src="assets/images/ai-icon.png" alt="AI" />
+        <h3>AI-Powered Courses</h3>
+        <p>Personalized lessons that adapt to your learning speed and style.</p>
+      </div>
+      <div class="feature-box">
+        <img src="assets/images/offline-icon.png" alt="Offline" />
+        <h3>Offline Mode</h3>
+        <p>Learn seamlessly even when you’re not connected to the internet.</p>
+      </div>
+      <div class="feature-box">
+        <img src="assets/images/community-icon.png" alt="Community" />
+        <h3>Interactive Community</h3>
+        <p>Engage with mentors and peers for a collaborative learning journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Impact Section -->
+  <section id="impact" class="impact">
+    <h2>Our Impact</h2>
+    <p class="impact-intro">
+      We’re building EduBridge step-by-step — connecting students, lessons, and languages.
+      These numbers show our growing progress!
+    </p>
+    <div class="impact-content">
+      <div class="impact-image">
+        <img src="assets/images/impact.jpg" alt="Students learning">
+      </div>
+      <div class="impact-counters">
+        <div class="counter-box">
+          <h3><span class="counter" data-target="50000">0</span>+</h3>
+          <p>Students Empowered</p>
+        </div>
+        <div class="counter-box">
+          <h3><span class="counter" data-target="120">0</span>+</h3>
+          <p>Courses Offered</p>
+        </div>
+        <div class="counter-box">
+          <h3><span class="counter" data-target="15">0</span>+</h3>
+          <p>Countries Reached</p>
+        </div>
+        <div class="counter-box">
+          <h3>Coming Soon</h3>
+          <p>Gamified Achievements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Learners Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial-box">
+        <img src="assets/images/boy.jpg" alt="Ashi" class="testimonial-img">
+        <p>“EduBridge completely changed how I learn. It’s engaging and fun!”</p>
+        <h4>- Ashish Sharma</h4>
+      </div>
+      <div class="testimonial-box">
+        <img src="assets/images/boy1.jpg" alt="Ansh" class="testimonial-img">
+        <p>“The dashboard insights helped me improve faster than ever before.”</p>
+        <h4>- Arun tiwari</h4>
+      </div>
+      <div class="testimonial-box">
+        <img src="assets/images/girl.jpg" alt="Aishwarya" class="testimonial-img">
+        <p>“AI-powered lessons make studying feel like a fun challenge!”</p>
+        <h4>- priya kumari</h4>
+      </div>
+    </div>
+  </section>
+
+
+    
+  <!-- Courses & Articles Section -->
+<section id="courses-articles" class="courses-articles">
+  <div class="container">
+
+    <!-- Explore Courses -->
+    <div id="courses" class="courses">
+      <h2>Explore Our Courses</h2>
+      <p>Choose from our curated AI-powered and interactive courses.</p>
+      <div class="courses-container">
+        <div class="course-card">
+          <img src="assets/images/course-python.jpg" alt="Python Basics">
+          <h3>Python Basics</h3>
+          <p>Learn Python from scratch with practical examples and projects.</p>
+          <a href="#" class="btn btn-ripple">Learn More</a>
+        </div>
+        <div class="course-card">
+          <img src="assets/images/course-web.jpg" alt="Web Development">
+          <h3>Web Development</h3>
+          <p>Build modern websites with HTML, CSS, and JavaScript.</p>
+          <a href="#" class="btn btn-ripple">Learn More</a>
+        </div>
+        <div class="course-card">
+          <img src="assets/images/course-ai.jpg" alt="AI & ML">
+          <h3>AI & Machine Learning</h3>
+          <p>Understand AI concepts and implement ML projects effectively.</p>
+          <a href="#" class="btn btn-ripple">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Read Articles Section -->
+<section id="read-articles" class="read-articles">
+  <div class="container">
+    <h2>Read Our Latest Articles</h2>
+    <div class="articles-grid">
+      <!-- Article Card 1 -->
+      <a href="articles.html#article1" class="article-card">
+        <img src="assets/images/article-study.jpg" alt="Effective Study Techniques">
+        <h3>Effective Study Techniques</h3>
+        <p>Boost your learning efficiency with proven study methods.</p>
+      </a>
+      <!-- Article Card 2 -->
+      <a href="articles.html#article2" class="article-card">
+        <img src="assets/images/article-time.jpg" alt="Time Management">
+        <h3>Time Management for Students</h3>
+        <p>Organize your study schedule to maximize productivity.</p>
+      </a>
+      <!-- Article Card 3 -->
+      <a href="articles.html#article3" class="article-card">
+        <img src="assets/images/article-ai-learning.jpg" alt="AI in Education">
+        <h3>AI in Education</h3>
+        <p>Learn how Artificial Intelligence is changing learning.</p>
+      </a>
+      <!-- Article Card 4 -->
+      <a href="articles.html#article4" class="article-card">
+        <img src="assets/images/article-memory.jpg" alt="Improve Memory">
+        <h3>Improve Your Memory</h3>
+        <p>Enhance memory retention with these practical tips.</p>
+      </a>
+      <!-- Article Card 5 -->
+      <a href="articles.html#article5" class="article-card">
+        <img src="assets/images/article-focus.jpg" alt="Enhance Focus">
+        <h3>Enhance Focus & Concentration</h3>
+        <p>Stay attentive and study smarter with these techniques.</p>
+      </a>
+      <!-- Article Card 6 -->
+      <a href="articles.html#article6" class="article-card">
+        <img src="assets/images/article-habits.jpg" alt="Study Habits">
+        <h3>Best Study Habits</h3>
+        <p>Adopt habits that make learning consistent and enjoyable.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Article Modal -->
+<div id="articleModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalContent"></p>
+  </div>
+</div>
+
+ 
+</section>
+<!-- Meet Our Team Section -->
+<section class="team-section">
+  <h2>Meet Our Team</h2>
+  <div class="team-members">
+    <div class="member">
+      <img src="assets/images/ashi.png" alt="Ashi">
+      <h3>Ashi</h3>
+      <p>Creative Head & Designer</p>
+    </div>
+    <div class="member">
+      <img src="assets/images/aishwarya.png" alt="Aishwarya">
+      <h3>Aishwarya</h3>
+      <p>Project Coordinator</p>
+    </div>
+    <div class="member">
+      <img src="assets/images/ansh.jpg" alt="Ansh">
+      <h3>Ansh</h3>
+      <p>Technical Lead</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.team-section {
+  background: linear-gradient(to right, #4A90E2, #50E3C2);
+  color: white;
+  text-align: center;
+  padding: 70px 30px;
+}
+.team-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+.team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.member {
+  background: white;
+  color: #023047;
+  border-radius: 20px;
+  width: 220px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.4s;
+}
+.member:hover { transform: scale(1.05); }
+.member img {
+  width: 100%;
+  border-radius: 15px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.member h3 { color: #4A90E2; font-size: 1.1rem; margin-bottom: 4px; }
+.member p { color: #666; font-size: 0.9rem; }
+</style>
+
+
+  <!-- Subscribe -->
+  <section id="subscribe" class="subscribe">
+    <h2>Join Our Learning Community</h2>
+    <p>Stay updated with our latest courses and innovations.</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit" class="btn btn-ripple">Subscribe</button>
+    </form>
+  </section>
+
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="footer-content">
+      <div class="about-part">
+        <h3>About EduBridge</h3>
+        <p>
+          EduBridge bridges the digital education gap by providing adaptive AI learning, 
+          offline lessons, gamified progress, and a supportive community — 
+          making learning smart, simple, and accessible for everyone.
+        </p>
+      </div>
+      <div class="contact-part">
+        <h3>Contact Us</h3>
+        <p>
+          Email: <a href="mailto:support@edubridge.ai">support@edubridge.ai</a><br />
+          Phone: +91 98765 43210<br />
+          Address: Indore, Madhya Pradesh, India
+        </p>
+        <p>Follow us:
+          <a href="#">Facebook</a> |
+          <a href="#">Instagram</a> |
+          <a href="#">Twitter</a>
+        </p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 EduBridge. All Rights Reserved.</p>
+  </footer>
+
+
+  
+
+  </div>
+</section>
+
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+  <!-- Login Popup Modal -->
+<div id="loginModal" class="login-modal hidden">
+  <div class="login-overlay" onclick="closeLogin()"></div>
+  <div class="login-content">
+    <span class="close-btn" onclick="closeLogin()">&times;</span>
+    <h2>Welcome Back 👋</h2>
+    <p class="subtitle">Login to continue your learning journey</p>
+    
+    <form>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <p class="register-text">Don’t have an account? 
+      <a href="#" onclick="showSignup()">Sign Up</a>
+    </p>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="login-modal hidden">
+  <div class="login-overlay" onclick="closeSignup()"></div>
+  <div class="login-content">
+    <span class="close-btn" onclick="closeSignup()">&times;</span>
+    <h2>Create an Account ✨</h2>
+    <p class="subtitle">Join EduBridge and start learning today!</p>
+    
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <p class="register-text">Already have an account? 
+      <a href="#" onclick="switchToLogin()">Login</a>
+    </p>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
